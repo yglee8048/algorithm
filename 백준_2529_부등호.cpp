@@ -128,39 +128,39 @@ int main()
     cin >> symbol[i];
   }
 
-  // 최대 정수
-  int max_ans = 0;
   // is_used 배열 초기화
   fill_n(is_used, SIZE, 0);
+
+  // 최대 정수
   for (int i = 9; i >= 0; i--)
   {
-    if (max_dfs(0, i))
+    if (dfs(0, i, true))
     {
-      for (int j = 0; j <= n; j++)
+      for (int j = 0; j < max_num.size(); j++)
       {
-        max_ans = max_ans * 10 + max_num[j];
+        cout << max_num[j];
       }
-      break;
-    }
-  }
-  // 최소 정수
-  int min_ans = 0;
-  // is_used 배열 초기화
-  fill_n(is_used, SIZE, 0);
-  for (int i = 0; i <= 9; i++)
-  {
-    if (min_dfs(0, i))
-    {
-      for (int j = 0; j <= n; j++)
-      {
-        min_ans = min_ans * 10 + min_num[j];
-      }
+      cout << '\n';
       break;
     }
   }
 
-  cout << max_ans << '\n';
-  cout << min_ans << '\n';
+  // is_used 배열 초기화
+  fill_n(is_used, SIZE, 0);
+
+  // 최소 정수
+  for (int i = 0; i <= 9; i++)
+  {
+    if (dfs(0, i, false))
+    {
+      for (int j = 0; j < min_num.size(); j++)
+      {
+        cout << min_num[j];
+      }
+      cout << '\n';
+      break;
+    }
+  }
 
   return 0;
 }
