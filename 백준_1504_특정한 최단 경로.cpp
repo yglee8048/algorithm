@@ -2,6 +2,19 @@
 #include <vector>
 #include <queue>
 
+/*
+	1. 착각
+	dis[begin][nxt] = sum + weight;
+	dis[nxt][begin] = sum + weight;
+	라고 저장해두면 더 효율적이라고 생각했다.
+	하지만, 이렇게 하면 dis[nxt][begin] 으로 인해 nxt를 출발점으로 할 때 nxt -> begin 이 이미 갱신되어 있으므로 그 이상 진행하지 않고 멈추면서 부정확한 결과를 얻게 만든다.
+
+	2. 비효율적인 공간 활용
+	실질적으로 필요한 dis 배열은 1, x, y 3개 뿐이므로, SIZE 가 아니라 3으로 생성하여 활용하면 공간을 절약할 수 있다.
+
+	3. 플로이드-와샬 로 푸는 방법도 생각해보면 좋을 것 같다.
+*/
+
 using namespace std;
 
 const int INF = 98765432;
