@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open('input.txt', 'rt')
+# import sys
+# sys.stdin = open('input.txt', 'rt')
 
 n = int(input())
 score = list(map(int, input().split()))
