@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.js": "javascriptreact",
+    "stack": "cpp",
+    "vector": "cpp",
+    "queue": "cpp",
+    "set": "cpp",
+    "unordered_set": "cpp",
+    "xutility": "cpp"
+  }
+}
