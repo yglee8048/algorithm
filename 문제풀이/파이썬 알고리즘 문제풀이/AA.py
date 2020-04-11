@@ -2,19 +2,17 @@ import sys
 sys.stdin = open('input.txt', 'rt')
 
 n = int(input())
-score = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-avg = round(float(sum(score)) / float(len(score)))
-min_diff, tgt_score, tgt_num = -1, -1, -1
-for i in range(n):
-  diff = avg - score[i] if avg > score[i] else score[i] - avg
+res = [0] * n
+idx = []
+for i, x in enumerate(arr):
+    for j in idx:
+        if j <= x:
+            x += 1
+    res[x] = i + 1
+    idx.append(x)
+    idx.sort()
 
-  if min_diff < 0 or min_diff > diff:
-    min_diff = diff
-    num = i+1
-    tgt_score = score[i]
-  elif min_diff == diff:
-    if tgt_score < score[i]:
-      num = i+1
-      tgt_score = score[i]
-print("%d %d" %(avg, num))
+for x in res:
+    print(x, end=" ")
