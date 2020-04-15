@@ -10,8 +10,8 @@ while True:
         if len(l) == 0:
             print(-1)
         else:
-            print(hq.heappop(l)[1])
+            print(-hq.heappop(l))
     elif n == -1:
         break
     else:
-        hq.heappush(l, (-n, n))
+        hq.heappush(l, -n)

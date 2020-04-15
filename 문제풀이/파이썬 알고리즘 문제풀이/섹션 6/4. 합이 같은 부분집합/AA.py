@@ -1,21 +1,24 @@
 import sys
-#sys.stdin=open("input.txt", "r")
-def DFS(L, sum):
-    if sum>total//2:
-        return
-    if L==n:
-        if sum==(total-sum):
+# sys.stdin = open('input.txt', 'rt')
+
+
+def dfs(i, psum):
+    if i > n-1:
+        if psum == ans:
             print("YES")
             sys.exit(0)
-    else:
-        DFS(L+1, sum+a[L])
-        DFS(L+1, sum)
+        return
+    dfs(i+1, psum)
+    if psum + i <= ans:
+        dfs(i+1, psum + l[i])
 
-if __name__=="__main__":
-    n=int(input())
-    a=list(map(int, input().split()))
-    total=sum(a)
-    DFS(0, 0)
-    print("NO")
 
-    
+if __name__ == "__main__":
+    n = int(input())
+    l = list(map(int, input().split()))
+    lsum = sum(l)
+    if lsum % 2 != 0:
+        print("NO")
+        sys.exit(0)
+    ans = lsum // 2
+    dfs(0, 0)
