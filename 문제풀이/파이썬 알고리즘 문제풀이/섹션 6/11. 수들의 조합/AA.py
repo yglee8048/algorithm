@@ -1,11 +1,25 @@
 import sys
-import itertools as it
-#sys.stdin=open("input.txt", "r")
-n, k=map(int, input().split())
-a=list(map(int, input().split()))
-m=int(input())
-cnt=0
-for x in it.combinations(a, k):
-    if sum(x)%m==0:
-        cnt+=1
-print(cnt)
+# sys.stdin = open('input.txt', 'rt')
+
+
+def dfs(l, s, psum):
+    global cnt
+    if l >= k:
+        if psum % m == 0:
+            cnt += 1
+        return
+    for i in range(s, n):
+        if ck[i] == 0:
+            ck[i] = 1
+            dfs(l+1, i+1, psum+arr[i])
+            ck[i] = 0
+
+
+if __name__ == "__main__":
+    n, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+    m = int(input())
+    ck = [0] * n
+    cnt = 0
+    dfs(0, 0, 0)
+    print(cnt)
