@@ -8,7 +8,7 @@ def dfs(l, ws):
         dfs(l+1, ws - w[l])
         dfs(l+1, ws)
     if ws > 0:
-        can[ws] = 1
+        can[ws] = 1  # set으로 넣고 len(set) 도 가능
 
 
 if __name__ == "__main__":
