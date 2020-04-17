@@ -21,6 +21,7 @@ for i, val in enumerate(arr):
     for j in range(n):
         if val == 0 and res[j] == 0:
             res[j] = i + 1
+            break
         else:
             val -= 1
 
