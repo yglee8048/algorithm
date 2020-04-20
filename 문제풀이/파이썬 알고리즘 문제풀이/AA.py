@@ -1,29 +1,37 @@
 import sys
 sys.stdin = open('input.txt', 'rt')
 
+def dfs(si, dis, depth):
+    global res
+    if depth > m:
+        s = sum(dis)
+        if s < res:
+            res = s
+            return
+    if si >= sl:
+        return
 
-def dfs(i, ps, ss):
-    global ms
-    if ps > c:
-        return
-    if ps + (tot - ss) <= ms:
-        return
-    if i > n-1:
-        if ps > ms:
-            ms = ps
-        return
-    # i는 태우지 않고 진행
-    dfs(i+1, ps, ps+w[i])
-    # i를 태우고 진행
-    dfs(i+1, ps+w[i], ps+w[i])
+    for home in homes:
+        home[0]
+
 
 
 if __name__ == "__main__":
-    c, n = map(int, input().split())
-    w = []
-    for _ in range(n):
-        w.append(int(input()))
-    ms = 0
-    tot = sum(w)
-    dfs(0, 0, 0)
-    print(ms)
+    n, m = map(int, input())
+    arr = [list(map(int, input().split())) for _ in range(n)]
+    res = 987654321
+
+    homes = []
+    stores = []
+    for i in range(n):
+        for j in range(n):
+            if arr[i][j] == 1:
+                homes.append((i, j))
+            elif arr[i][j] == 2:
+                stores.append((i, j))
+    hl = len(homes)
+    sl = len(stores)
+    dis = [res] * hl
+    dfs(0, dis, 0)
+    print(res)
+
