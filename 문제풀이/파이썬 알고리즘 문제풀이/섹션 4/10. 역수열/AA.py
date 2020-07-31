@@ -22,7 +22,7 @@ for i, val in enumerate(arr):
         if val == 0 and res[j] == 0:
             res[j] = i + 1
             break
-        else:
+        elif res[j] == 0:
             val -= 1
 
 for x in res:
