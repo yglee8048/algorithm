@@ -5,20 +5,22 @@ INF = 987654
 
 if __name__ == "__main__":
     n, m = map(int, input().split())
-    arr = [[INF]*(n+1) for _ in range(n+1)]
-    for i in range(1, n+1):
-        arr[i][i] = 0
+    dis = [[INF] * n for _ in range(n)]
 
     for _ in range(m):
-        a, b, d = map(int, input().split())
-        arr[a][b] = d
+        i, j, d = map(int, input().split())
+        dis[i-1][j-1] = d
 
-    for k in range(1, n+1):
-        for i in range(1, n+1):
-            for j in range(1, n+1):
-                arr[i][j] = min(arr[i][k] + arr[k][j], arr[i][j])
+    for i in range(n):
+        dis[i][i] = 0
 
-    for i in range(1, n+1):
-        for j in range(1, n+1):
-            print(arr[i][j] if arr[i][j] != INF else "M", end=" ")
+    # i -> k -> j
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j])
+
+    for i in range(n):
+        for j in range(n):
+            print("M" if dis[i][j] == INF else dis[i][j], end=" ")
         print()
