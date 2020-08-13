@@ -1,14 +1,21 @@
 def ck(arr, n, x):
     cnt = 0
-    i = 0
+    i = 1
+    st = arr[0]
     while i < len(arr):
-        if arr[i] < x:
+        if st < x:
+            st += arr[i]
             cnt += 1
-            i += 1
-            if cnt > n:
-                return False
+        else:
+            st = arr[i]
         i += 1
-    return True
+    if st < x:
+        cnt += 1
+
+    if cnt > n:
+        return False
+    else:
+        return True
 
 
 def solution(distance, rocks, n):
@@ -27,7 +34,3 @@ def solution(distance, rocks, n):
         else:
             e = mid - 1
     return ans
-
-
-if __name__ == "__main__":
-    print(solution(25, [2, 14, 11, 21, 17], 2))
